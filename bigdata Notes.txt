@@ -15,6 +15,9 @@ Create Index:
 Create Partition:
 	ALTER TABLE employee ADD PARTITION (year='2013') location '/2012/part2012';	
 	
+PIG:
+======
+
 
 
 

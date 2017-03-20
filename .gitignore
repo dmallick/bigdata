@@ -1,2 +1,3 @@
 .metadata/*
 bigdata/.settings/*
+bigdata/.*

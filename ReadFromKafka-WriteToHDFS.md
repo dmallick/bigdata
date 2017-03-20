@@ -21,4 +21,3 @@ How to check:
 command: hadoop fs -cat /tmp/kafka/HelloKafkaTopic/17-03-17/
 You should have files inside this folder containing the kafka messages
 
-

@@ -1,0 +1,29 @@
+Notes:
+Hive:
+=========
+Error starting Hive: Name node is in safe mode. Not able to leave
+	Command: sudo -u hdfs hdfs dfsadmin -safemode leave
+Create external table in Hive: 
+	CREATE TABLE weather (TimeEST STRING,TempInF FLOAT,Dew_PointF FLOAT,Humidity INT,Sea_Level_Pressure FLOAT,Visibility_MPH FLOAT,Wind_Direction STRING,Wind_Speed_MPH FLOAT,Gust_SpeedMPH FLOAT,PrecipitationIn STRING,Events STRING,Conditions STRING,WindDirDegrees FLOAT,DateUTC STRING) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LOCATION '/hive/input'; 
+Load Data:
+	hadoop fs –copyFromLocal /appl/softwares/input/soweather.csv
+	LOAD DATA INPATH 'hdfs:/input/weather.csv' INTO TABLE weather;
+Create View: 
+	Comand: CREATE VIEW emp_30000 AS SELECT * FROM employee WHERE salary>30000; 
+Create Index:
+	CREATE INDEX inedx_salary ON TABLE employee(salary)
+Create Partition:
+	ALTER TABLE employee ADD PARTITION (year='2013') location '/2012/part2012';	
+	
+
+
+
+
+
+
+
+Important Unix command:
+free -m: checks memory usage
+
+
+

@@ -8,6 +8,36 @@ AtScale
 Jethro Data
 Kyvos Insights
 
+HBase/Phoenix ORM
+SnappyData
+Concord
+Spark Succinct
+Alluxio
+Apache Arrow
+TensorFlow
+Druid
+Geode
+
+Ignite (https://ignite.apache.org/)
+Bigtop (http://bigtop.apache.org/)
+Crunch (https://crunch.apache.org/)
+Flink (https://flink.apache.org/)
+Slider (http://slider.incubator.apache.org/)
+
+
+Hadoop - Solid, enterprise strength and the basis for everything else. You need YARN and HDFS and the infrastructure from Hadoop to be your primary data store and run your key big data servers and applications.
+Spark - Easy to use, supporting all the important Big Data Languages (Scala, Python, Java, R), a huge ecosystem, growing quickly, easy microbatching/batching/SQL support. This is another no-brainer.   
+NiFi - The tool out of NSA that allows for easy data ingest, store and processing from so many sources with minimal coding and a slick UI.   Dozens of sources from social media, JMS, NoSQL, SQL, Rest/JSON Feeds, AMQP, SQS, FTP, Flume, ElasticSearch, S3, MongoDB, Splunk, Email, HBase, Hive, HDFS, Azure Event Hub, Kafka and more. If there isn't a source or sink you need, it's straight forward Java code to write your own Processor for that. Another great Apache project in your tool box.  This is the Swiss Army Knife of Big Data tools.
+Apache Hive 2.1 - Apache Hive has been the SQL solution on Hadoop forever. With the latest release, performance and feature enhancement keep Hive as the solution for SQL on Big Data.
+Kafka - The choice for asynchronous, distributed messaging between Big Data systems. It comes baked into most stacks.   From Spark to NiFi to third party tools to Java to Scala, it is a great glue between systems. This needs to be in your stack.
+Phoenix - HBase - BigTable for Open Source with tons of companies working on HBase and making it scale huge. NoSQL backed by HDFS and well integrated with all the tools. The addition of the ever building Phoenix on HBase is making this the go-to for NoSQL.    This adds SQL, JDBC, OLTP, and operational analytics to HBase.
+Zeppelin -  Easy, integrated notebook tool for working with Hive, Spark, SQL, Shell, Scala, Python and a ton of other data exploration and machine learning tools. It's very easy to work with and a great way to explore and query data. This tool is gaining in support and features. They just need to up their charting and mapping.
+Sparkling Water - H2O fills the gap in Spark's Machine Learning and just works. It does all the machine learning you need.
+Apache Beam - is the unified framework for data processing pipeline development in Java. This allows you to support Spark and Flink as well. Other frameworks will come online, and you won't have to learn too many frameworks.
+Stanford CoreNLP - Natural Language Processing is huge and just growing more. Stanford is continuing to improve their framework.
+
+
+
 Ambari™: A web-based tool for provisioning, managing, and monitoring Apache Hadoop clusters which includes support for Hadoop HDFS, Hadoop MapReduce, Hive, 
 HCatalog, HBase, ZooKeeper, Oozie, Pig and Sqoop. Ambari also provides a dashboard for viewing cluster health such as heatmaps and ability to view MapReduce, 
 Pig and Hive applications visually alongwith features to diagnose their performance characteristics in a user-friendly manner.
@@ -21,3 +51,87 @@ Pig™: A high-level data-flow language and execution framework for parallel com
 Spark™: A fast and general compute engine for Hadoop data. Spark provides a simple and expressive programming model that supports a wide range of applications, including ETL, machine learning, stream processing, and graph computation.
 Tez™: A generalized data-flow programming framework, built on Hadoop YARN, which provides a powerful and flexible engine to execute an arbitrary DAG of tasks to process data for both batch and interactive use-cases. Tez is being adopted by Hive™, Pig™ and other frameworks in the Hadoop ecosystem, and also by other commercial software (e.g. ETL tools), to replace Hadoop™ MapReduce as the underlying execution engine.
 ZooKeeper™: A high-performance coordination service for distributed applications.
+
+Apache Ranger is a framework for enabling, monitoring and managing comprehensive data security across the Hadoop platform. Based on technology from big data security specialist XA Secure, Apache Ranger was made an Apache Incubator project after Hadoop distribution vendor Hortonworks acquired that company. Ranger offers a centralized security framework to manage fine-grained access control over Hadoop and related components (like Apache Hive, HBase, etc.). It also can enable audit tracking and policy analytics
+Apache Knox Gateway is a REST API Gateway that provides a single secure access point for all REST interactions with Hadoop clusters. In that way, it helps in the control, integration, monitoring and automation of critical administrative and analytical needs of the enterprise. It also complements Kerberos secured Hadoop clusters. Knox is an Apache Incubator project.
+
+
+======================================
+||Technologies we use: Real-time Query||
+======================================
+https://www.thinkbiganalytics.com/technologies-use-big-data-reference-architecture/
+
+Presto
+Presto is an open source distributed SQL query engine designed for running interactive analytic queries against data sources of all sizes.  Through a single query, Presto allows you to access data where it lives, including in Apache Hive™, Apache Cassandra™, relational databases or even proprietary data stores.  Presto was created by Facebook for the analytics needs of extremely large data-driven organizations.
+
+Teradata is contributing open source code to Presto and making a multi-year commitment to increase adoption in the enterprise. Through this commitment Teradata is adding critical features in the areas of software installation, improved monitoring & management, YARN integration, security, support for ODBC/JDBC drivers, ecosystem integration and BI tools certifications. In addition to these software contributions, Teradata is also improving Presto’s documentation and creating easy-to-follow QuickStart guides.
+
+Think Big, a Teradata Company, is now offering specialized Presto professional services, including:
+
+Piloting new functionality with Presto Jumpstart
+Customized Presto training
+Design and development services for Presto
+Click here for more information
+
+Impala
+As useful as Hive is, the latency of Hadoop means that each query in an interactive Hive session will take many seconds, which makes it difficult to explore and evolve ideas quickly. Impala is a new query engine that bypasses MapReduce for very fast queries over data sets in HDFS. It uses HiveQL as the query language. Impala is very new; the first production release is forthcoming. It currently doesn’t support all HiveQL features, but in many scenarios, speedups of 100x over Hive performance are already possible.
+
+Spark and Shark
+While very flexible, the MapReduce has a number of constraints that affect performance. Spark is a newer distributed computing framework that exploits sophisticated in-memory data caching to significantly improve many common data operations, sometimes by multiples of 10x. Shark is a port of Hive to Spark, bringing performance improvements to Hive queries that are comparable to the improvements Impala provides.
+
+Google BigQuery
+This is a web service that lets you do interactive analysis of massive datasets—up to billions of rows. It is the first publicly available access to Google’s internal big data technology stack.
+
+==============================================
+||Technologies we use: Ingestion and Streaming||
+==============================================
+
+Flume
+Flume is distributed system for collecting log data from many sources, aggregating it, and writing it to HDFS. It is designed to be reliable and highly available, while providing a simple, flexible, and intuitive programming model based on streaming data flows. Flume provides extensibility for online analytic applications that process data stream in situ. Flume and Chukwa share similar goals and features. However, there are some notable differences. Flume maintains a central list of ongoing data flows, stored redundantly in Zookeeper. In contrast, Chukwa distributes this information more broadly among its services. Flume adopts a “hop-by-hop” model, while in Chukwa the agents on each machine are responsible for deciding what data to send.
+
+Chukwa
+Log processing was one of the original purposes of MapReduce. Unfortunately, Hadoop is hard to use for this purpose. Writing MapReduce jobs to process logs is somewhat tedious and the batch nature of MapReduce makes it difficult to use with logs that are generated incrementally across many machines. Furthermore, HDFS stil does not support appending to existing files. Chukwa is a Hadoop subproject that bridges that gap between log handling and MapReduce. It provides a scalable distributed system for monitoring and analysis of log-based data. Some of the durability features include agent-side replying of data to recover from errors. See also Flume.
+
+Sqoop
+Apache Sqoop is a tool designed for efficiently transferring bulk data between Apache Hadoop and structured datastores such as relational databases. It offers two-way replication with both snapshots and incremental updates.
+
+Kafka
+Apache Kafka is a distributed publish-subscribe messaging system. It is designed to provide high throughput persistent messaging that’s scalable and allows for parallel data loads into Hadoop. Its features include the use of compression to optimize IO performance and mirroring to improve availability, scalability and to optimize performance in multiple-cluster scenarios.
+
+Storm
+Hadoop is ideal for batch-mode processing over massive data sets, but it doesn’t support event-stream (a.k.a. message-stream) processing, i.e., responding to individual events within a reasonable time frame. (For limited scenarios, you could use a NoSQL database like HBase to capture incoming data in the form of append updates.) Storm is a general-purpose, event-processing system that is growing in popularity for addressing this gap in Hadoop. Like Hadoop, Storm uses a cluster of services for scalability and reliability. In Storm terminology you create a topology that runs continuously over a stream of incoming data, which is analogous to a Hadoop job that runs as a batch process over a fixed data set and then terminates. An apt analogy is a continuous stream of water flowing through plumbing. The data sources for the topology are called spouts and each processing node is called a bolt. Bolts can perform arbitrarily sophisticated computations on the data, including output to data stores and other services. It is common for organizations to run a combination of Hadoop and Storm services to gain the best features of both platforms.
+
+==============================================
+||Technologies we use: Apache Hadoop Ecosystem ||
+==============================================
+
+Pig
+
+Pig is a platform for constructing data flows for extract, transform, and load (ETL) processing and analysis of large datasets. Pig Latin, the programming language for Pig provides common data manipulation operations, such as grouping, joining, and filtering. Pig generates Hadoop MapReduce jobs to perform the data flows. This high-level language for ad hoc analysis allows developers to inspect HDFS stored data without the need to learn the complexities of the MapReduce framework, thus simplifying the access to the data.
+
+The Pig Latin scripting language is not only a higher-level data flow language but also has operators similar to SQL (e.g., FILTER and JOIN) that are translated into a series of map and reduce functions. Pig Latin, in essence, is designed to fill the gap between the declarative style of SQL and the low-level procedural style of MapReduce.
+
+Hive
+
+Hive is a SQL-based data warehouse system for Hadoop that facilitates data summarization, ad hoc queries, and the analysis of large datasets stored in Hadoop-compatible file systems (e.g., HDFS, MapR-FS, and S3) and some NoSQL databases. Hive is not a relational database, but a query engine that supports the parts of SQL specific to querying data, with some additional support for writing new tables or files, but not updating individual records. That is, Hive jobs are optimized for scalability, i.e., computing over all rows, but not latency, i.e., when you just want a few rows returned and you want the results returned quickly. Hive’s SQL dialect is called HiveQL. Table schema can be defined that reflect the data in the underlying files or data stores and SQL queries can be written against that data. Queries are translated to MapReduce jobs to exploit the scalability of MapReduce. Hive also support custom extensions written in Java, including user-defined functions (UDFs) and serializer-deserializers for reading and optionally writing custom formats, e.g., JSON and XML dialects. Hence, analysts have tremendous flexibility in working with data from many sources and in many different formats, with minimal need for complex ETL processes to transform data into more restrictive formats. Contrast with Shark and Impala.
+
+Cascading
+
+As a general purpose computing framework, MapReduce is very powerful, but writing applications in the Hadoop Java API for MapReduce is very daunting, due to the verbosity of Java, the low-level abstractions of the API, and the relative inflexibility of the MapReduce for expressing many common algorithms. Cascading is the most popular high-level Java API that hides many of the complexities of MapReduce programming behind more intuitive pipes and data flow abstractions. See also Scalding and Cascalog.
+
+Scalding
+
+While Cascading removes some of the complexities of Hadoop MapReduce programming, it still suffers from the limitations and verbosity of Java. Scalding is a Scala API on top of Cascading that removes most Java boilerplate and provides concise implementations of common data analysis and manipulation operations familiar from SQL and analogous to Pig’s data flow abstractions. Scalding also adds matrix and algebra models that are useful for implementing machine learning and other algorithms that require linear algebra. See also Cascalog.
+
+Cascalog
+
+Like Scalding, Cascalog hides the limitations of Java behind a powerful and concise Clojure API for Cascading. Cascalog also adds Logic Programming concepts inspired by Datalog. Hence the name “Cascalog” is a contraction of Cascading and Datalog.
+
+Amazon Web Services Elastic MapReduce
+
+Amazon Web Services (AWS) Elastic MapReduce (EMR) is Amazon’s packaged Hadoop offering. Rather than building Hadoop deployments manually on EC2 (Elastic Compute Cloud) clusters, users can spin up fully configured Hadoop installations using simple invocation commands, either through the AWS Web Console or through command-line tools. Several of the popular Hadoop tools are available as options, including Hive, Pig, and HBase.
+
+
+
+
+

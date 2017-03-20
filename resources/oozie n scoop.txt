@@ -1,0 +1,113 @@
+mysql -u root -p
+Password: hadoop
+
+ sqoop import-all-tables --connect jdbc:mysql://sandbox.hortonworks.com:3306/bigdata_db --username=root --password=hadoop --driver com.mysql.jdbc.Driver  --hive-import
+
+sqoop import --connect jdbc:mysql://sandbox.hortonworks.com:3306/bigdata_db \
+--username root \
+--password hadoop \
+--table tutorials_tbl \
+--hcatalog-database bigdata_db \
+--hcatalog-table tutorials_tbl \
+--create-hcatalog-table \
+--hcatalog-storage-stanza "stored as orcfile" \
+--outdir sqoop_import \
+-m 1 \
+--compression-codec org.apache.hadoop.io.compress.SnappyCodec \
+--driver com.mysql.jdbc.Driver
+
+sqoop import-all-tables -m 1 --connect jdbc:mysql://quickstart:3306/retail_db --username=retail_dba --password=cloudera --compression-codec=snappy --as-parquetfile --warehouse-dir=/user/hive/warehouse --hive-import
+
+
+create table tutorials_tbl( tutorial_id INT NOT NULL AUTO_INCREMENT, tutorial_title VARCHAR(100) NOT NULL, tutorial_author VARCHAR(40) NOT NULL, submission_date DATE, PRIMARY KEY ( tutorial_id ) );
+insert into tutorials_tbl values(1,'scoop','debasish','12/11/16');
+insert into tutorials_tbl values(2,'hive','debasish','11/11/16');
+mysql -u root -p
+
+create user 'developer'@'localhost' identified by 'Windows2000';
+mysql -u developer -p
+GRANT ALL PRIVILEGES ON *.* TO 'developer'@'localhost';
+
+
+
+sqoop import-all-tables \
+    -m 1 \
+    --connect jdbc:mysql://localhost:3306/bigdata_db \
+    --username=root \
+    --password=hadoop \
+    --compression-codec=snappy \
+    --as-parquetfile \
+    --warehouse-dir=/user/hive/warehouse_practice \
+    --hive-import
+	
+	D:\cloudera\cloudera-quickstart-vm-5.8.0-0-virtualbox
+	
+	
+	http://quickstart.cloudera:7180/cmf/home
+	
+	scala> val inputrdd = sc.parallelize(Seq(("maths", 50), ("maths", 60), ("english", 65)))
+inputrdd: org.apache.spark.rdd.RDD[(String, Int)] = ParallelCollectionRDD[29] at parallelize at :21
+
+scala> val mapped = inputrdd.mapValues(mark => (mark, 1));
+mapped: org.apache.spark.rdd.RDD[(String, (Int, Int))] = MapPartitionsRDD[30] at mapValues at :23
+
+scala> val reduced = mapped.reduceByKey((x, y) => (x._1 + y._1, x._2 + y._2))
+reduced: org.apache.spark.rdd.RDD[(String, (Int, Int))] = ShuffledRDD[31] at reduceByKey at :25
+
+scala> val average = reduced.map { x =>
+     |                      val temp = x._2
+     |                      val total = temp._1
+     |                      val count = temp._2
+     |                      (x._1, total / count)
+     |                      }
+average: org.apache.spark.rdd.RDD[(String, Int)] = MapPartitionsRDD[32] at map at :27
+
+scala>
+     | average.collect()
+res30: Array[(String, Int)] = Array((english,65), (maths,55))
+
+
+set server --host localhost --port 12000 --webapp
+
+PATH=$PATH:'pwd'/bin/
+
+https://archive.apache.org/dist/sqoop/1.99.4/sqoop-1.99.4-bin-hadoop200.tar.gz
+https://sqoop.apache.org/docs/1.99.4/Installation.html
+enable chmod 777 to your sqoop directory
+sqoop.properties : modify hadoop conf folder path
+sqoop2-tool verify
+https://archanaschangale.wordpress.com/2013/09/18/sqoopimporting-data-from-mysql-into-hdfs/
+http://brianoneill.blogspot.in/2014/10/sqoop-1993-w-hadoop-2-installation.html
+http://localhost:12000/sqoop/version
+https://sqoop.apache.org/docs/1.99.4/CommandLineClient.html
+https://sqoop.apache.org/docs/1.99.4/Installation.html
+https://kb.brightcomputing.com/faq/index.php?action=artikel&cat=25&id=242&artlang=en
+
+
+oozie job --oozie http://localhost:11000/oozie --config edgenode_path/job1.properties -D oozie.wf.application.path hdfs://home/cloudera/oozietest//workflow.xml –run
+sudo -u hdfs hadoop fs -rm -r /home/cloudera/oozietest/*
+sudo -u hdfs hadoop fs -copyFromLocal /home/cloudera/oozietest/*.* /home/cloudera/oozietest/
+
+http://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/
+https://www.linkedin.com/pulse/start-playing-hadoop-all-you-need-love-more-ram-neeraj-sabharwal
+
+/etc/pig/conf
+
+
+
+Create DB:
+======================
+mysqladmin -u root -p create bigdata_db
+
+create user 'developer'@'sandbox.hortonworks.com' identified by 'Windows2000';
+
+
+sqoop import-all-tables -m 1 --connect jdbc:mysql://sandbox.hortonworks.com:3306/bigdata_db --username=root --password=hadoop --driver com.mysql.jdbc.Driver --as-parquetfile --target-dir=/user/hive/warehouse/bigdata_tbl --hive-import
+
+
+http://sandbox.hortonworks.com:8088/proxy/application_1481438056797_0004/
+
+sqoop import-all-tables -m 1 --connect jdbc:mysql://sandbox.hortonworks.com:3306/bigdata_db --username=root --password=hadoop --driver com.mysql.jdbc.Driver --compression-codec=snappy --as-parquetfile --target-dir=/user/hive/warehouse --hive-import --create-hive-table --hive-table sqoop_workspace.customers
+
+
+--create-hive-table 

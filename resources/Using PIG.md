@@ -23,7 +23,7 @@ Result: (1,2,Football)
 Query:
 ============
 GROUP_BY_DEPARTMENT = GROUP A BY (category_department_id);
-GROUP_BY_DEPARTMENT;
+DUMP GROUP_BY_DEPARTMENT;
 
 Result:
 ===========
@@ -33,7 +33,7 @@ Result:
 Query:
 ============
 GROUP_BY_DEPARTMENT_NAME = GROUP A BY (category_department_id,category_name);
-GROUP_BY_DEPARTMENT_NAME;
+DUMP GROUP_BY_DEPARTMENT_NAME;
 
 Result:
 ===========

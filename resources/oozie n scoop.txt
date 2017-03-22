@@ -1,11 +1,11 @@
 mysql -u root -p
-Password: hadoop
+Password: cloudera
 
  sqoop import-all-tables --connect jdbc:mysql://sandbox.hortonworks.com:3306/bigdata_db --username=root --password=hadoop --driver com.mysql.jdbc.Driver  --hive-import
 
 sqoop import --connect jdbc:mysql://sandbox.hortonworks.com:3306/bigdata_db \
 --username root \
---password hadoop \
+--password cloudera \
 --table tutorials_tbl \
 --hcatalog-database bigdata_db \
 --hcatalog-table tutorials_tbl \

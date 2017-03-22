@@ -1,0 +1,35 @@
+Pre-requisite:
+----------------
+Oozie is configured
+Sqoop is configured
+MySQL is configured
+
+Directory Structure:
+----------------------
+job.properties: /appl/oozie-appl/conf
+workflow.xml: hdfs://quickstart.cloudera:8020//user/cloudera/examples/apps/sqoop
+
+job.properties content:
+------------------------
+oozie.wf.application.path: points to workflow.xml (aka: application)
+
+Command to run: 
+---------------
+$ oozie job -oozie http://localhost:11000/oozie -config /appl/oozie-appl/conf/job.properties -run
+
+How to track:
+--------------
+URL: http://quickstart.cloudera:11000/oozie/
+From the page, navigate to job, from job to logs
+
+How to verify:
+-----------------
+$ hdfs dfs -cat /user/cloudera/examples/output-data/sqoop/part-m-00000/
+1,2,Football
+2,2,Soccer
+3,2,Baseball & Softball
+4,2,Basketball
+5,2,Lacrosse
+6,2,Tennis & Racquet
+7,2,Hockey
+8,2,More Sports

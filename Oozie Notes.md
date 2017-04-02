@@ -1,5 +1,6 @@
 Oozie
 --------
+
 They can do a number of different things: execute a MapReduce job, run a Java main class, or run a Hive or Pig script, to name a few possibilities
 Scheduling Recurring Workflows
 Oozie has another type of a job called a coordinator application. Coordinator applications allow users to schedule more complex workflows, including workflows that are scheduled regularly,or that have dependencies on the output from other workflows.
@@ -25,3 +26,7 @@ On the basis of functionality, Coordinator can be sub-divided into two major gro
 2.2 Sliding Window-Based Coordinator:  It is invoked frequently and data is aggregated over multiple overlapping previous instances. For example, invoking it at a frequency of 5 minutes and running action on aggregated previous 4 instances of 15 minutes data.
 
 2.3Rollups-Based Coordinator: It is invoked after a long period of time and data is aggregated over multiple previous instances from last time of invocation. For example, it will run once a day, and will trigger a workflow that aggregates 24 instances of hourly data.
+
+
+Resources:
+http://developeriq.in/articles/2013/aug/28/scheduling-workflows-using-oozie-coordinator/

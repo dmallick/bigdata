@@ -16,13 +16,30 @@ version            Display version information
 --num-mappers
 --incremental, -check-column, --last-value
 --incremental lastmodified --check-column last_update_date --last-value "2013-05-22 01:01:01"
+--meta-connect
+--split-by, --boundary-query
+--mapreduce-job-name
+--export-dir cities
+--batch/-Dsqoop.export.records.per.statement=10
+--staging-table
+--update-key
+--update-mode allowinsert
+--columns country,city
+--hive-import
+--map-column-hive
+--hive-overwrite
+--hbase-table cities 
+--column-family world
+
 sqoop import --compress --compression-codec org.apache.hadoop.io.compress.BZip2Codec
 sqoop import --connect jdbc:mysql://mysql.example.com/sqoop --username sqoop --table cities --direct
 sqoop import --map-column-java c1=Float,c2=String,c3=String
 sqoop import-all-tables
 sqoop job --list
 sqoop job --show visits  
-  
+sqoop job --create visits --meta-connect jdbc:hsqldb:hsql://metastore.example.com:16000/sqoop -- import --table visits  
+sqoop import --connect jdbc:mysql://mysql.example.com/sqoop --username sqoop --password sqoop --table cities --hive-import --hive-partition-key day 
+--hive-partition-value "2013-05-22"
   
 Sqoop supports three different file formats; one of these is text, and the other two are binary. The binary formats are Avro and Hadoop’s SequenceFile.  
 
@@ -43,5 +60,16 @@ As the native utilities usually produce text output, binary formats like Sequenc
 
 You’ll find that many of the import parameters can’t be used in conjunction with the import-all-tables tool. you can’t use the parameter --target-dir
 
+Sharing the Metastore Between Sqoop Clients:
+Sqoop’s metastore can easily be started as a service:	sqoop metastore
 
+The free-form query import can’t be used in conjunction with the --warehouse-dir parameter.
+
+It’s important not to use Hive’s warehouse directory (usually /user/hive/warehouse) for the temporary location, as it may cause issues with loading data in the second step.
+
+You want to import data into Hive on a regular basis (for example, daily), and for that purpose your Hive table is partitioned. You would like Sqoop to automatically import data into the partition rather than only to the table. In order to take advantage of this functionality, you need to specify two additional parameters: --hive-partition-key, --hive-partition-value
+
+Sqoop mandates that the partition column be of type STRING
+
+Both the HBase table and the column family must exist prior to running the Sqoop import command. If you want Sqoop to create the table automatically, you’ll need to specify the parameter --create-hbasetable.
 
